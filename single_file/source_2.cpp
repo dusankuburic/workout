@@ -95,8 +95,8 @@ void LinkedList::pushBack(Sword* new_sword){
 		newNode->sword = new_sword;
 		newNode->next = pHead;
 		pHead = newNode;
-		return;
-	}
+
+	}else{
 
 	Node* pNode = pHead;
 	while (pNode->next != nullptr) {
@@ -107,7 +107,8 @@ void LinkedList::pushBack(Sword* new_sword){
 	newNode->sword = new_sword;
 	newNode->next = nullptr;
 	pNode->next = newNode;
-
+ }
+ 
 	count++;
 }
 
