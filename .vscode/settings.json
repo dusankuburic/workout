@@ -3,6 +3,7 @@
         "xtree": "cpp",
         "map": "cpp",
         "algorithm": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "iostream": "cpp"
     }
 }
