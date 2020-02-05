@@ -1,0 +1,40 @@
+SELECT MAX(r.PLATA) as "Maksimum", 
+MIN(r.PLATA) as "Minumum",
+SUM(r.PLATA) as "Suma",
+AVG(r.Plata) as "Prosek"
+FROM RADNIK r;
+
+SELECT r.SIFRAODELJ,
+MAX(r.PLATA) AS "Maksimum",
+MIN(r.PLATA) AS "Minimum",
+SUM(r.PLATA) AS "Suma",
+AVG(r.PLATA) AS "Prosek"
+FROM RADNIK r
+GROUP BY r.SIFRAODELJ
+
+SELECT r.SIFRAPROF, COUNT(*) as broj_radnika
+FROM RADNIK r
+GROUP BY r.SIFRAPROF;
+
+SELECT COUNT(DISTINCT SIFRARUKOV) AS broj_rukovodioca
+FROM RADNIK;
+
+SELECT (MAX(r.PLATA) - MIN(r.PLATA) ) as "razlika"
+FROM RADNIK r
+
+SELECT r.SIFRARUKOV AS rukovodilac, MIN(PLATA) AS najmanja_plata
+FROM RADNIK r
+WHERE r.SIFRARUKOV IS NOT NULL
+GROUP BY r.SIFRARUKOV
+ORDER BY najmanja_plata DESC;
+
+SELECT r.SIFRARUKOV AS rukovodilac, MIN(PLATA) AS najmanja_plata
+FROM RADNIK r
+WHERE r.SIFRARUKOV IS NOT NULL
+GROUP BY r.SIFRARUKOV
+HAVING MIN(PLATA) > 20000
+ORDER BY najmanja_plata DESC;
+
+SELECT r.SIFRAODELJ, (MAX(r.PLATA)-MIN(r.PLATA)) as "Razlika najvece i najmanje plate"
+FROM RADNIK r
+GROUP BY r.SIFRAODELJ
