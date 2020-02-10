@@ -1,34 +1,45 @@
 #include<iostream>
 #include<string>
 
+
+
+enum REGION {NS, BG, NI, UG};
+
+
 class Human
 {
 public:
 	short int age_;
 	std::string name;
+	REGION region_; 
+	static std::string regions[];
 
 	virtual void whoami() = 0;
 };
 
+
+std::string Human::regions[] = { "NS", "BG","NI", "UG" };
+
 class Hero : public Human
 {
 public:
-	Hero(short int age, int power, int range);
+	Hero(short int age, int power, int range, REGION region);
 	int power_;
 	int range_;
 
 
 	void whoami() override 
 	{
-		std::cout << "Hero=> age:" << age_ << " power:" << power_ << " range:" << range_ << '\n';
+		std::cout << "Hero=> region:" << regions[region_] << " age:" << age_ << " power:" << power_ << " range:" << range_ << '\n';
 	}
 
 };
 
-Hero::Hero(short int age, int power, int range):
+Hero::Hero(short int age, int power, int range, REGION region):
 	power_(power), range_(range)
 {
 	age_ = age;
+	region_ = region;
 }
 
 
@@ -53,9 +64,6 @@ Hunter::Hunter(short int age, int heal, int tempo):
 }
 
 
-
-
-
 struct Node
 {
 	Human* human_;
@@ -67,6 +75,7 @@ class LinkedList
 {
 private:
 	Node* head_ = nullptr;
+
 public:
 	~LinkedList();
 	void push_front(Human* human);
@@ -77,6 +86,9 @@ public:
 	void pop_back();
 	void print();
 };
+
+
+#pragma region llist_functions
 
 void LinkedList::print()
 {
@@ -101,8 +113,6 @@ LinkedList::~LinkedList()
 		delete prev;
 	}
 }
-
-
 
 void LinkedList::push_front(Human* human)
 {
@@ -215,28 +225,32 @@ void LinkedList::pop_back()
 }
 
 
+#pragma endregion
+
 int main()
 {
 
-	LinkedList lista;
-	Human* h1 = new Hero(10,201,1000);
+	LinkedList* lista = new LinkedList();
+	Human* h1 = new Hero(10,201,100, REGION::NI);
 	Human* h2 = new Hunter(20,444,232);
-	Human* h3 = new Hero(44,1024,66);
+	Human* h3 = new Hero(44,1024,66, REGION::BG);
 
-	lista.push_front(h1);
-	lista.push_front(h2);
-	lista.push_front(h3);
-	lista.print();
+	lista->push_front(h1);
+	lista->push_front(h2);
+	lista->push_front(h3);
+	lista->print();
 
 	std::cout << "Rev:\n";
 
-	lista.reverse();
-	lista.print();
+	lista->reverse();
+	lista->print();
+
 
 	delete h1;
 	delete h2;
 	delete h3;
 
+	delete lista;
 
 	return 0;
 }
