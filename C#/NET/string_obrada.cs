@@ -31,7 +31,7 @@ namespace ConsoleApp91
             string s = new string(ca);
 
 
-
+            /*
             string empty = "";
             Console.WriteLine(empty == "");
             Console.WriteLine(empty == string.Empty);
@@ -41,7 +41,7 @@ namespace ConsoleApp91
             Console.WriteLine(nullString == null);
             Console.WriteLine(nullString == "");
             Console.WriteLine(nullString.Length == 0);
-
+            */
 
             string str = "abcde";
             char letter = str[1];
@@ -72,7 +72,44 @@ namespace ConsoleApp91
             Console.WriteLine("12345".PadLeft(9, '*'));
             Console.WriteLine("12345".PadLeft(9));
 
+
+            Console.WriteLine("   abc \t\r\n".Trim().Length);
+
+            Console.WriteLine("to be done".Replace(" ", " | "));
+            Console.WriteLine("to be done".Replace(" ", " "));
+
+            string[] words = "The quick brown fox".Split();
+
+
+            foreach (string word in words)
+                Console.Write(word + "|");
+
+
+            string[] words1 = "The quick brown fox".Split();
+            string together = string.Join(" ", words1);
+
+            string sentence = string.Concat("The", " quick", " brown", " fox");
+            string sameSentence = "The" + " quick" + " brown" + " fox";
+
+
+            string composite = "It's {0} degrees in {1} on this {2} morning";
+            string sf = string.Format(composite, 35, "Perth", DateTime.Now.DayOfWeek);
+
+
+            string comp = "Name={0,-20} Credit Limit={1,15:C}";
+
+            Console.WriteLine(string.Format(composite, "Mary", 500));
+            Console.WriteLine(string.Format(composite, "Elizabeth", 20000));
+
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 50; i++)
+                sb.Append(i + " ");
+
+            Console.WriteLine(sb.ToString());
+
             Console.ReadKey();
         }
     }
 }
+
