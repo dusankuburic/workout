@@ -1,4 +1,3 @@
-#include<boost/lexical_cast.hpp>
 #include<iostream>
 #include<cstdio>
 #include<string>
@@ -8,7 +7,7 @@
 #include<tuple>
 
 using namespace std;
-using namespace boost;
+
 
 struct Tag
 {
