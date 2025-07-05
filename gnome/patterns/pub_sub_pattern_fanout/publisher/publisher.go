@@ -23,7 +23,7 @@ func main() {
 	}
 	defer ch.Close()
 
-	err = ch.ExchangeDeclare("x.logs", "fanout", true, false, false, false, nil)
+	err = ch.ExchangeDeclare("x.logs", "fanout", false, false, false, false, nil)
 	if err != nil {
 		log.Fatalln("Failed to declare an exchange:", err)
 	}
